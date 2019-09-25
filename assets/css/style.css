@@ -5,7 +5,35 @@ body{
 .mainContent{
     width:50%;
     border:2px solid red;
-    padding: 8rem 5rem;
+    padding: 15rem 5rem;
     margin:0 auto;
     text-align: center; 
 }
+h1{
+    position:relative;
+    top: -200px;
+    font-size:50px;
+}
+
+.startButton{
+    position:relative;
+    top:-150px;
+    padding:2rem 5rem;
+    border-radius:8px;
+    background-color:silver;
+    font-size:24px;
+}
+.startButton:hover{
+    background-color:orange;
+}
+
+#startText{
+    font-size: 24px;
+    position:relative;
+    top: 20px;
+}
+/* #timer{
+    position:relative;
+    top:-200px;
+    font-size:24px;
+} */
