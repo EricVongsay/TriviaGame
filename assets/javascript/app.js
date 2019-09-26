@@ -126,11 +126,11 @@ function loadQuestion(){
 }
 
 function loadChoices(currentChoices){
-    var result = " ";
+    var result = ' ' ;
     
     for (var i = 0; i < currentChoices.length; i++){
-        result += "<button class='choice'>" + currentChoices[i] + "</button>";
-        $(".choice").attr("data-answer", currentChoices[i]);
+        result += `<button id="choice" data-answer =`+currentChoices[i]+ `>` + currentChoices[i] + `</button>`;
+        $("#choice").attr('data-answer', currentChoices[i]);
     }
     return result;
 
