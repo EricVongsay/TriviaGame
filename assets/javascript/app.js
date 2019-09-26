@@ -3,6 +3,7 @@ console.log("hello world");
 
 // create variables for game start
 var timer=10;
+var questionNumber=0;
 var correctAnswers=0;
 var wrongAnswers=0;
 var intervalId;
@@ -67,24 +68,26 @@ $(".startButton").click(function(){
 
     $(".questionDiv").remove();
 
+    loadQuestion();
+    
+
     startGame();
     
 
 });
 
-//start game 
+
+
+
+
+// *******************************FUNCTIONS************************
 function startGame(){
     correctAnswers=0;
     wrongAnswers=0;
     timer=10;
 
     //getting questions to pop up
-    for(var i = 0;i=questions.length;i++){
-        var question = Object.values(questions);
-    $("#question").text(question);
-        
-
-    }
+   
     
     
    
@@ -99,18 +102,38 @@ function tenSecondTimer(){
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
 
-    $(".countdownTimer").html("<h2>Time Remaining: "+ timer +" seconds</h2>");
+    $(".countdownTimer").html("<p>Time Remaining: "+ timer +" seconds</p>");
 
 }
 
 function decrement(){
     timer--;
 
-    if(timer===0){
-
-    }
-
     tenSecondTimer();
+}
+
+function loadQuestion(){
+    //pulling question from array with index value of questionNumber
+    var currentQuestion = triviaQuestions[questionNumber].question;
+    //pulling choices
+    var currentChoices = triviaQuestions[questionNumber].options;
+    //pulling answers
+    var currentAnswer = triviaQuestions[questionNumber].answer;
+
+
+    $("#question").text(currentQuestion);
+    $(".choices").html(loadChoices(currentChoices));
+}
+
+function loadChoices(currentChoices){
+    var result = " ";
+    
+    for (var i = 0; i < currentChoices.length; i++){
+        result += "<button class='choice'>" + currentChoices[i] + "</button>";
+        $(".choice").attr("data-answer", currentChoices[i]);
+    }
+    return result;
+
 }
 
 
