@@ -1,4 +1,4 @@
-// $(document).ready(function(){
+$(document).ready(function(){
 console.log("hello world");
 
 // create variables for game start
@@ -84,14 +84,13 @@ $(".startButton").click(function(){
 function startGame(){
     correctAnswers=0;
     wrongAnswers=0;
-    timer=10;
+
 
     //getting questions to pop up
    
     
     
    
-    tenSecondTimer();
 }
 
 //function that will run in 10 seconds
@@ -106,11 +105,26 @@ function tenSecondTimer(){
 
 }
 
+function timesUp(){
+    clearInterval(intervalId);
+    wrongAnswers++;
+}
+
+
 function decrement(){
     timer--;
 
     tenSecondTimer();
+
+    if(timer===0){
+        timesUp();
+        nextQuestion();
+
+    }
 }
+
+
+
 
 function loadQuestion(){
     //pulling question from array with index value of questionNumber
@@ -120,10 +134,18 @@ function loadQuestion(){
     //pulling answers
     var currentAnswer = triviaQuestions[questionNumber].answer;
 
+    //reset timer each time question is loaded
+    timer=10;
+
+    tenSecondTimer();
+
 
     $("#question").text(currentQuestion);
     $(".choices").html(loadChoices(currentChoices));
 }
+
+
+
 
 function loadChoices(currentChoices){
     var result = ' ' ;
@@ -136,6 +158,22 @@ function loadChoices(currentChoices){
 
 }
 
+function nextQuestion(){
+
+    //checking to see if theres no more questions
+    var triviaCheck = (triviaQuestions.length-1)===questionNumber;// (8-1) === questionNumber(last question is [7])
+
+    if(triviaCheck){
+        console.log("game over");
+
+    }else {
+    questionNumber++;
+    loadQuestion();
+
+    }
+    
+
+}
 
 
 
@@ -147,4 +185,5 @@ function loadChoices(currentChoices){
 
 
 
-// });
+
+});
