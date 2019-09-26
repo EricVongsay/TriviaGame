@@ -12,8 +12,8 @@ var intervalId;
 var triviaQuestions=[
     {
         question: "What year did Seattle lose the Super Sonics?",
-        options: [2005,2010,2008,2009],
-        answer: 2008
+        options: ["2005","2010","2008","2009"],
+        answer: "2008"
     },
 
     {
@@ -30,26 +30,26 @@ var triviaQuestions=[
 
     {
         question: "How many championships does Michael Jordan have?",
-        options: [3,5,7,6],
-        answer: 6
+        options: ["3","5","7","6"],
+        answer: "6"
     },
 
     {
         question: "How many championships does Lebron James have?",
-        options: [3,2,4,6],
-        answer: 3
+        options: ["3","2","4","6"],
+        answer: "3"
     },
 
     {
         question: "How many championships does Kobe Bryant have?",
-        options: [3,6,4,5],
-        answer: 5
+        options: ["3","6","4","5"],
+        answer: "5"
     },
 
     {
         question: "How many NBA teams are there?",
-        options: [20,25,30,35],
-        answer: 30
+        options: ["20","25","30","35"],
+        answer: "30"
     },
 
     {
@@ -177,7 +177,7 @@ $(document).on("click", "#choice", function(){
     var answer = triviaQuestions[questionNumber].answer;
     console.log(dataAnswer);
 
-    if(answer==dataAnswer){
+    if(answer===dataAnswer){
         console.log(true);
         correctAnswers++;
         nextQuestion();
