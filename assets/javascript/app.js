@@ -71,7 +71,7 @@ $(".startButton").click(function(){
     loadQuestion();
     
 
-    startGame();
+
     
 
 });
@@ -81,18 +81,6 @@ $(".startButton").click(function(){
 
 
 // *******************************FUNCTIONS************************
-function startGame(){
-    correctAnswers=0;
-    wrongAnswers=0;
-
-
-    //getting questions to pop up
-   
-    
-    
-   
-}
-
 //function that will run in 10 seconds
 
 function tenSecondTimer(){
@@ -165,6 +153,7 @@ function nextQuestion(){
 
     if(triviaCheck){
         console.log("game over");
+        results();
 
     }else {
     questionNumber++;
@@ -175,8 +164,44 @@ function nextQuestion(){
 
 }
 
+function results(){
+    var result = "<p>You got "+correctAnswers+" question(s) correct!</p> <p>You got "+ wrongAnswers+" question(s) wrong!</p> <button id='retry'>Retry</button>";
+    $(".choices").html(result);
+};
 
 
+//checking if user picks the right answer
+
+$(document).on("click", "#choice", function(){
+    var dataAnswer = $(this).attr("data-answer");
+    var answer = triviaQuestions[questionNumber].answer;
+    console.log(dataAnswer);
+
+    if(answer==dataAnswer){
+        console.log(true);
+        correctAnswers++;
+        nextQuestion();
+    }else{
+        console.log(false);
+        wrongAnswers++;
+
+        nextQuestion();
+
+    }
+    
+});
+
+//restart button
+$(document).on("click","#retry",function(){
+    timer=10;
+    questionNumber=0;
+    correctAnswers=0;
+    wrongAnswers=0;
+
+
+    loadQuestion();
+    
+});
 
 
 
