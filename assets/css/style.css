@@ -32,6 +32,11 @@ h1{
     position:relative;
     top: 20px;
 }
+
+.countdownTimer{
+    position:relative;
+    top:-200px;
+}
 /* #timer{
     position:relative;
     top:-200px;
