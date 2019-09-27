@@ -8,6 +8,7 @@ var correctAnswers=0;
 var wrongAnswers=0;
 var intervalId;
 
+
 // questions and answers
 var triviaQuestions=[
     {
@@ -140,7 +141,7 @@ function loadChoices(currentChoices){
     
     for (var i = 0; i < currentChoices.length; i++){
         result += `<button id="choice" data-answer =`+currentChoices[i]+ `>` + currentChoices[i] + `</button>`;
-        $("#choice").attr('data-answer', currentChoices[i]);
+        $("#choice").attr('data-answer', triviaQuestions[i].answer);
     }
     return result;
 
@@ -174,8 +175,10 @@ function results(){
 
 $(document).on("click", "#choice", function(){
     var dataAnswer = $(this).attr("data-answer");
-    var answer = triviaQuestions[questionNumber].answer;
     console.log(dataAnswer);
+    var answer = triviaQuestions[questionNumber].answer;
+    console.log(answer);
+    console.log(triviaQuestions[questionNumber].answer);
 
     if(answer===dataAnswer){
         console.log(true);
